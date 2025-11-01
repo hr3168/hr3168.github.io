@@ -203,12 +203,13 @@ const Hero = ({ data }) => {
         )}
         <StyledButtonContainer>
           <StyledCVLink href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-            Resume
+            CV
           </StyledCVLink>
           <StyledScholarLink
             href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             Google Scholar
           </StyledScholarLink>
           <StyledEmailLink href={`mailto:${email}`}>Email</StyledEmailLink>

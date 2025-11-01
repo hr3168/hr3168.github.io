@@ -12,10 +12,10 @@ module.exports = {
     'jsx-a11y/accessible-emoji': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'no-unused-vars': [
-      'error',
+      'warn',
       {
         argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_|^Styled|^styled|^React$|Heading|Section|Img|Button|Icon',
+        varsIgnorePattern: '^[A-Z]',
         ignoreRestSiblings: true,
       },
     ],

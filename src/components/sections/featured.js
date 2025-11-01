@@ -34,7 +34,7 @@ const StyledProjectName = styled.h5`
   margin: 0 0 7px;
   color: ${colors.lightestSlate};
   ${media.tablet`font-size: 20px;`};
-  ${media.thone`color: ${colors.white};`};
+  ${media.thone`color: ${colors.lightestSlate};`};
   a {
     ${media.tablet`display: block;`};
   }
@@ -45,7 +45,7 @@ const StyledAuthor = styled.div`
   color: #888888;
   margin-bottom: 15px;
   font-style: italic;
-  ${media.thone`color: ${colors.lightSlate};`};
+  ${media.thone`color: #888888;`};
 `;
 const StyledDescription = styled.div`
   color: ${colors.slate};
@@ -237,7 +237,8 @@ const Featured = ({ data }) => {
                   <StyledImgContainer
                     href={external ? external : github ? github : '#'}
                     target="_blank"
-                    rel="nofollow noopener noreferrer">
+                    rel="nofollow noopener noreferrer"
+                  >
                     {cover && cover.childImageSharp && cover.childImageSharp.fluid ? (
                       <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
                     ) : (
@@ -251,7 +252,8 @@ const Featured = ({ data }) => {
                           justifyContent: 'center',
                           color: '#666',
                           fontSize: '14px',
-                        }}>
+                        }}
+                      >
                         No Image
                       </div>
                     )}
@@ -263,7 +265,8 @@ const Featured = ({ data }) => {
                         href={github}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="GitHub Link">
+                        aria-label="GitHub Link"
+                      >
                         Code
                       </StyledButton>
                     )}
@@ -272,7 +275,8 @@ const Featured = ({ data }) => {
                         href={pdf}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="PDF Link">
+                        aria-label="PDF Link"
+                      >
                         PDF
                       </StyledButton>
                     )}
@@ -281,7 +285,8 @@ const Featured = ({ data }) => {
                         href={video}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="Video Link">
+                        aria-label="Video Link"
+                      >
                         Video
                       </StyledButton>
                     )}
@@ -290,7 +295,8 @@ const Featured = ({ data }) => {
                         href={external}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="External Link">
+                        aria-label="External Link"
+                      >
                         Link
                       </StyledButton>
                     )}
@@ -305,7 +311,8 @@ const Featured = ({ data }) => {
                         href={external}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="External Link">
+                        aria-label="External Link"
+                      >
                         {title}
                       </a>
                     ) : (

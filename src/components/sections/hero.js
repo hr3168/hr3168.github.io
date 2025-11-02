@@ -206,7 +206,7 @@ const Hero = ({ data }) => {
             CV
           </StyledCVLink>
           <StyledScholarLink
-            href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
+            href="https://scholar.google.com/citations?user=r3_EsikAAAAJ"
             target="_blank"
             rel="noopener noreferrer"
           >

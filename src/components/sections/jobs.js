@@ -103,7 +103,9 @@ const StyledJobCard = styled.div`
 
 const Jobs = ({ data }) => {
   const revealContainer = useRef(null);
-  useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
+  useEffect(() => {
+    if (sr) {sr.reveal(revealContainer.current, srConfig());}
+  }, []);
 
   return (
     <StyledContainer id="jobs" ref={revealContainer}>

@@ -101,9 +101,11 @@ const ArchivePage = ({ location, data }) => {
   const revealTable = useRef(null);
   const revealProjects = useRef([]);
   useEffect(() => {
-    sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealTable.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
+    if (sr) {
+      sr.reveal(revealTitle.current, srConfig());
+      sr.reveal(revealTable.current, srConfig());
+      revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 10)));
+    }
   }, []);
 
   return (
@@ -162,7 +164,8 @@ const ArchivePage = ({ location, data }) => {
                               href={external}
                               target="_blank"
                               rel="nofollow noopener noreferrer"
-                              aria-label="External Link">
+                              aria-label="External Link"
+                            >
                               <FormattedIcon name="External" />
                             </a>
                           )}
@@ -171,7 +174,8 @@ const ArchivePage = ({ location, data }) => {
                               href={github}
                               target="_blank"
                               rel="nofollow noopener noreferrer"
-                              aria-label="GitHub Link">
+                              aria-label="GitHub Link"
+                            >
                               <FormattedIcon name="GitHub" />
                             </a>
                           )}

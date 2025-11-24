@@ -11,11 +11,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
   const tagTemplate = path.resolve('src/templates/tag.js');
+  const projectTemplate = path.resolve('src/templates/project.js');
 
   const result = await graphql(`
     {
       postsRemark: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/posts/" } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+      featuredRemark: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/featured/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -52,6 +66,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
+  // Create project detail pages
+  const projects = result.data.featuredRemark.edges;
+
+  projects.forEach(({ node }) => {
+    if (node.frontmatter.slug) {
+      createPage({
+        path: `/projects/${node.frontmatter.slug}`,
+        component: projectTemplate,
+        context: {
+          slug: node.frontmatter.slug,
+        },
+      });
+    }
+  });
+
   // Extract tag data from query
   const tags = result.data.tagsGroup.group;
   // Make tag pages
@@ -69,7 +98,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
-  if (stage === 'build-html') {
+  if (stage === 'build-html' || stage === 'develop-html') {
     actions.setWebpackConfig({
       module: {
         rules: [
@@ -80,6 +109,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           {
             test: /animejs/,
             use: loaders.null(),
+          },
+          {
+            test: /miniraf/,
+            use: loaders.null(), // SSR 阶段把 miniraf 变成空模块
           },
         ],
       },

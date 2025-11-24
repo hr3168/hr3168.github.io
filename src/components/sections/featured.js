@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
@@ -130,19 +131,29 @@ const StyledButton = styled.a`
   }
 `;
 const StyledFeaturedImg = styled(Img)`
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
   vertical-align: middle;
   border-radius: ${theme.borderRadius};
-  position: relative;
   transition: ${theme.transition};
-  object-fit: contain;
-  object-position: center;
+
+  & > div,
+  & > picture,
+  & > picture > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
   ${media.tablet`
-    object-fit: contain;
-    object-position: center;
-    width: 100%;
-    height: 100%;
+    & > div,
+    & > picture,
+    & > picture > img {
+      object-fit: contain !important;
+    }
   `};
 `;
 const StyledImgContainer = styled.a`
@@ -151,7 +162,7 @@ const StyledImgContainer = styled.a`
   border-radius: ${theme.borderRadius};
   transition: ${theme.transition};
   width: 250px;
-  height: 300px;
+  height: 250px;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;
@@ -160,7 +171,9 @@ const StyledImgContainer = styled.a`
 
   ${media.thone`
     width: 100%;
-    height: 200px;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    height: auto;
   `};
   &:hover,
   &:focus {
@@ -217,8 +230,10 @@ const Featured = ({ data }) => {
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   useEffect(() => {
-    sr.reveal(revealTitle.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    if (sr) {
+      sr.reveal(revealTitle.current, srConfig());
+      revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    }
   }, []);
 
   return (
@@ -229,37 +244,81 @@ const Featured = ({ data }) => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, pdf, video, author, type } = frontmatter;
+            const {
+              external,
+              title,
+              tech,
+              github,
+              cover,
+              pdf,
+              video,
+              author,
+              type,
+              slug,
+              excerpt,
+            } = frontmatter;
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div>
-                  <StyledImgContainer
-                    href={external ? external : github ? github : '#'}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                  >
-                    {cover && cover.childImageSharp && cover.childImageSharp.fluid ? (
-                      <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
-                    ) : (
-                      <div
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          backgroundColor: '#f0f0f0',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#666',
-                          fontSize: '14px',
-                        }}
-                      >
-                        No Image
-                      </div>
-                    )}
-                  </StyledImgContainer>
+                  {slug ? (
+                    <StyledImgContainer as={Link} to={`/projects/${slug}`}>
+                      {cover && cover.childImageSharp && cover.childImageSharp.fluid ? (
+                        <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
+                      ) : (
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: '#f0f0f0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#666',
+                            fontSize: '14px',
+                          }}
+                        >
+                          No Image
+                        </div>
+                      )}
+                    </StyledImgContainer>
+                  ) : (
+                    <StyledImgContainer
+                      href={external ? external : github ? github : '#'}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                    >
+                      {cover && cover.childImageSharp && cover.childImageSharp.fluid ? (
+                        <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
+                      ) : (
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: '#f0f0f0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#666',
+                            fontSize: '14px',
+                          }}
+                        >
+                          No Image
+                        </div>
+                      )}
+                    </StyledImgContainer>
+                  )}
 
                   <StyledLinkWrapper>
+                    {slug && (
+                      <StyledButton
+                        as={Link}
+                        to={`/projects/${slug}`}
+                        aria-label="View Project Details"
+                      >
+                        Details
+                      </StyledButton>
+                    )}
                     {github && (
                       <StyledButton
                         href={github}
@@ -306,7 +365,9 @@ const Featured = ({ data }) => {
                 <StyledContent>
                   <StyledLabel>{type || 'Featured Project'}</StyledLabel>
                   <StyledProjectName>
-                    {external ? (
+                    {slug ? (
+                      <Link to={`/projects/${slug}`}>{title}</Link>
+                    ) : external ? (
                       <a
                         href={external}
                         target="_blank"
@@ -320,7 +381,7 @@ const Featured = ({ data }) => {
                     )}
                   </StyledProjectName>
                   {author && <StyledAuthor dangerouslySetInnerHTML={{ __html: author }} />}
-                  <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+                  <StyledDescription dangerouslySetInnerHTML={{ __html: excerpt || html }} />
                   {tech && (
                     <StyledTechList>
                       {tech.map((tech, i) => (

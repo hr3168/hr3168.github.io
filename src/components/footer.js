@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedIcon } from '@components/icons';
 import { socialMedia } from '@config';
@@ -60,11 +60,37 @@ const StyledGitHubInfo = styled.div`
   }
 `;
 
+const StyledClustrMaps = styled.div`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+  min-height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: auto;
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
 const Footer = () => {
   const [githubInfo, setGitHubInfo] = useState({
     stars: null,
     forks: null,
   });
+  const clustrMapsContainerRef = useRef(null);
+  const clustrMapsLoadedRef = useRef(false);
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
@@ -82,6 +108,40 @@ const Footer = () => {
       .catch(e => console.error(e));
   }, []);
 
+  useEffect(() => {
+    // Load ClustrMaps widget
+    if (
+      typeof window === 'undefined' ||
+      !clustrMapsContainerRef.current ||
+      clustrMapsLoadedRef.current
+    ) {
+      return;
+    }
+
+    const loadClustrmaps = () => {
+      if (clustrMapsContainerRef.current) {
+        // Create the widget HTML directly
+        const widgetHTML = `
+          <a href="https://clustrmaps.com/site/1c8md" title="Visit tracker">
+            <img src="https://clustrmaps.com/map_v2.png?d=yNdRW8g_Lz5oCcgK5nuE-zW2Q80TAUvkzKbDg84s_4g&cl=ffffff" 
+                 style="max-width: 100%; height: auto;" 
+                 alt="Visitors Map" />
+          </a>
+        `;
+        clustrMapsContainerRef.current.innerHTML = widgetHTML;
+        clustrMapsLoadedRef.current = true;
+        console.log('ClustrMaps widget loaded');
+      }
+    };
+
+    // Delay loading slightly to ensure page is fully rendered
+    const timer = setTimeout(loadClustrmaps, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <StyledContainer>
       <StyledSocial>
@@ -93,37 +153,17 @@ const Footer = () => {
                   href={url}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
-                  aria-label={name}>
+                  aria-label={name}
+                >
                   <FormattedIcon name={name} />
                 </StyledSocialLink>
               </li>
             ))}
         </StyledSocialList>
       </StyledSocial>
-      <StyledMetadata tabindex="-1">
-        <StyledGitHubLink
-          href="https://github.com/bchiang7/v4"
-          target="_blank"
-          rel="nofollow noopener noreferrer">
-          <div>
-            Designed &amp; Built by Brittany Chiang<br></br>
-            Revised by Yashita Namdeo
-          </div>
-
-          {githubInfo.stars && githubInfo.forks && (
-            <StyledGitHubInfo>
-              <span>
-                <FormattedIcon name="Star" />
-                <span>{githubInfo.stars.toLocaleString()}</span>
-              </span>
-              <span>
-                <FormattedIcon name="Fork" />
-                <span>{githubInfo.forks.toLocaleString()}</span>
-              </span>
-            </StyledGitHubInfo>
-          )}
-        </StyledGitHubLink>
-      </StyledMetadata>
+      <StyledClustrMaps ref={clustrMapsContainerRef}>
+        {/* ClustrMaps will be loaded here asynchronously */}
+      </StyledClustrMaps>
     </StyledContainer>
   );
 };

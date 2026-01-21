@@ -1,6 +1,6 @@
 ---
 date: '2025.08'
-type: Under Review
+type: Minor Review at International Journal of Human-Computer Studies (IJHCS)
 title: "Introducing ManyViews: an AI-assisted tool to support citizens' engagement in the design of urban spaces"
 author: '<u>Rong Huang</u>, Yihan Hou, Wei Zeng<sup>*</sup>'
 cover: 'demo.png'

@@ -1,6 +1,6 @@
 ---
 date: '2025.11'
-type: Under Review
+type: Under Review at npj Heritage Science
 title: 'Synthetic Data Generation with Spatial and Semantic Fidelity for Multimodal Large Language Model on Architectural Heritage Interpretation'
 author: '<u>Rong Huang</u>, Haichuan Lin, Wei Zeng<sup>*</sup>'
 cover: 'demo3.png'

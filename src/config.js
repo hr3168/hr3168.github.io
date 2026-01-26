@@ -3,7 +3,7 @@ module.exports = {
   siteDescription:
     'Rong Huang is a Ph.D. candidate in the Computational Media and Arts Thrust at the Information Hub, The Hong Kong University of Science and Technology (Guangzhou), co-supervised by Prof. Wei Zeng and Prof. Kang Zhang.',
   siteKeywords:
-    'Rong Huang, Rong, Huang, ronghuang, computational media and arts, information hub, The hong kong university of science and technology (Guangzhou), China',
+    'Rong Huang, Rong Huang hkustgz, Rong Huang hkust, Rong Huang HKUST, Rong Huang HKUSTGZ, Rong, Huang, ronghuang, HKUSTGZ, HKUST, computational media and arts, information hub, The hong kong university of science and technology (Guangzhou), China',
   siteUrl: 'https://hr3168.github.io/research',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-45666519-2',

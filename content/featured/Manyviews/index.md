@@ -1,8 +1,8 @@
 ---
 date: '2025.08'
-type: Minor Review at International Journal of Human-Computer Studies (IJHCS)
+type: International Journal of Human-Computer Studies (IJHCS)
 title: "Introducing ManyViews: an AI-assisted tool to support citizens' engagement in the design of urban spaces"
-author: '<u>Rong Huang</u>, Yihan Hou, Wei Zeng<sup>*</sup>'
+author: '<u>Rong Huang</u>, Yihan Hou, Mela Bettega, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo.png'
 # slug: 'manyviews'
 # github: 'https://github.com/yashitanamdeo/Realtime-Face-Mask-Detection'

@@ -1,6 +1,6 @@
 ---
 date: '2024.09'
-type: ACM Conference on Human Factors in Computing Systems (CHI 2024)
+type: ACM Conference on Human Factors in Computing Systems (CHI), 2024
 title: 'PlantoGraphy: Incoporating Iterative Design Process into Generative Artificial Intelligence for Landscape Rendering'
 author: '<u>Rong Huang</u>, Hai-chuan Lin, Chuanzhang Chen, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo1.png'

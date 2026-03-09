@@ -1,6 +1,6 @@
 ---
 date: '2025.08'
-type: International Journal of Human-Computer Studies (IJHCS)
+type: International Journal of Human-Computer Studies (IJHCS), 2026
 title: "Introducing ManyViews: an AI-assisted tool to support citizens' engagement in the design of urban spaces"
 author: '<u>Rong Huang</u>, Yihan Hou, Mela Bettega, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo.png'

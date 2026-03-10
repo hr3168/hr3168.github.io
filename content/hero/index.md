@@ -20,4 +20,8 @@ Currently, I am investigating two key stages in the design process:
 
 - **Creation :** I transform design intent into computational representations and design interactive systems to integrate controllable GenAI into design workflows.
 
-<!-- Here are some of the key areas I work with throughout my academic journey! -->
+<div class="job-hunting-block">
+<div class="job-hunting-emoji"><span class="job-hunting-emoji-shake">🍅</span> <span class="job-hunting-label">Job Hunting:</span> Faculty/Postdoc (2026)</div>
+<div class="job-hunting-tagline">I’m on the academic job market for positions starting in 2026. If you know of any suitable openings, please feel free to reach out!
+</div>
+</div>

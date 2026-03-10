@@ -134,6 +134,47 @@ const StyledDescription = styled.div`
   a {
     ${mixins.inlineLink};
   }
+
+  .job-hunting-block {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: ${colors.transGreen};
+    border-radius: 8px;
+    border-left: 4px solid ${colors.green};
+    font-size: inherit;
+    line-height: 1.3;
+
+    .job-hunting-emoji {
+      margin-bottom: 1px;
+    }
+
+    .job-hunting-emoji-shake {
+      display: inline-block;
+      font-size: 1.3em;
+      animation: tomato-shake 0.4s ease-in-out infinite;
+    }
+
+    @keyframes tomato-shake {
+      0%,
+      100% {
+        transform: rotate(-6deg) translateX(-2px);
+      }
+      50% {
+        transform: rotate(6deg) translateX(2px);
+      }
+    }
+
+    .job-hunting-label {
+      font-weight: bold;
+      color: ${colors.lightestSlate};
+    }
+
+    .job-hunting-tagline {
+      margin-top: 2px;
+      color: ${colors.slate};
+    }
+  }
 `;
 const StyledButtonContainer = styled.div`
   display: flex;

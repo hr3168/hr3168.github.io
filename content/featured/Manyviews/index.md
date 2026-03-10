@@ -1,7 +1,7 @@
 ---
 date: '2025.08'
-type: International Journal of Human-Computer Studies (IJHCS), 2026
-title: "Introducing ManyViews: an AI-assisted tool to support citizens' engagement in the design of urban spaces"
+type: '<span style="color: #3D3D3D"><em>International Journal of Human-Computer Studies (IJHCS)</em>, 2026</span>'
+title: "Introducing ManyViews: an AI-assisted Tool to Support Citizens' Engagement in the Design of Urban Spaces"
 author: '<u>Rong Huang</u>, Yihan Hou, Mela Bettega, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo.png'
 # slug: 'manyviews'
@@ -15,7 +15,7 @@ tech:
   - Generative AI
 showInProjects: true
 excerpt: >
-  This project addresses a core barrier in public participation: non-experts struggle to build spatial understanding from professional design drawings and articulate design modification. Through <u>diffusion-based view generation</u>, <u>multimodal editing</u>, and <u>provenance visualization</u>, it enables non-experts to comprehend, reshape, and collectively reflect on urban design proposals.
+  <span style="color: #3D3D3D">This project addresses a core barrier in public participation: non-experts struggle to build spatial understanding from professional design drawings and articulate design modification. Through <u>diffusion-based view generation</u>, <u>multimodal editing</u>, and <u>provenance visualization</u>, it enables non-experts to comprehend, reshape, and collectively reflect on urban design proposals.</span>
 abstract: >
   ManyViews is an AI-assisted tool designed to enhance citizen engagement in urban design by enabling non-experts to envision and contribute design proposals through intuitive visual transformations and collaborative visualization.
 background: >

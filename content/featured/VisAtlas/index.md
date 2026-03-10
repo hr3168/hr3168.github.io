@@ -1,6 +1,6 @@
 ---
 date: '2023'
-type: IEEE Transactions on Visualization and Computer Graphics, 2023
+type: '<span style="color: #3D3D3D"><em>IEEE Transactions on Visualization and Computer Graphics</em>, 2023</span>'
 title: 'VISAtlas: An Image-Based Exploration and Query System for Large Visualization Collections via Neural Image Embedding'
 author: 'Yilin Ye, <u>Rong Huang</u>, Wei Zeng<sup>*</sup>'
 cover: 'demo4.png'
@@ -15,7 +15,7 @@ tech:
   - Design Pattern
 showInProjects: true
 excerpt: >
-  Existing visualization retrieval tools rely on metadata and overlook chart appearance. VISAtlas provides <u>image-based retrieval</u> through neural embeddings trained with a specialized CNN and triplet loss, offering a <u>scalable embedding overview</u> using contextual layouts and density sampling.
+  <span style="color: #3D3D3D">Existing visualization retrieval tools rely on metadata and overlook chart appearance. VISAtlas provides <u>image-based retrieval</u> through neural embeddings trained with a specialized CNN and triplet loss, offering a <u>scalable embedding overview</u> using contextual layouts and density sampling.</span>
 abstract: >
   VISAtlas is an innovative image-based exploration and query system that enables researchers and practitioners to efficiently search and discover visualizations within large collections using visual similarity rather than metadata alone.
 background: >

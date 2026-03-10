@@ -1,6 +1,6 @@
 ---
 date: '2024.09'
-type: ACM Conference on Human Factors in Computing Systems (CHI), 2024
+type: '<span style="color: #3D3D3D"><em>ACM Conference on Human Factors in Computing Systems (CHI)</em>, 2024</span>'
 title: 'PlantoGraphy: Incoporating Iterative Design Process into Generative Artificial Intelligence for Landscape Rendering'
 author: '<u>Rong Huang</u>, Hai-chuan Lin, Chuanzhang Chen, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo1.png'
@@ -16,7 +16,7 @@ tech:
   - Generative AI
 showInProjects: true
 excerpt: >
-  While recent GenAI enables automated landscape rendering, existing end-to-end methods remain incompatible with common design processes. This work addresses this challenge by <u>introducing _scene graphs_ and _layouts_ as an intermediate representation</u> during generation, and by integrating an <u>improved diffusion module for more consistent generation</u>. It enables designers to configure element composition and refine outputs while maintaining coherence across design iterations.
+  <span style="color: #3D3D3D">While recent GenAI enables automated landscape rendering, existing end-to-end methods remain incompatible with common design processes. This work addresses this challenge by <u>introducing scene graphs and layouts as an intermediate representation</u> during generation, and by integrating an <u>improved diffusion module for more consistent generation</u>. It enables designers to configure element composition and refine outputs while maintaining coherence across design iterations.</span>
 abstract: >
   PlantoGraphy is a creativity support system that bridges the gap between generative AI capabilities and traditional iterative design processes in landscape architecture, enabling designers to maintain control and flexibility throughout the rendering workflow.
 background: >

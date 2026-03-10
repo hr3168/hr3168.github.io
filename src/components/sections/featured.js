@@ -31,7 +31,7 @@ const StyledLabel = styled.h4`
   padding-top: 0;
 `;
 const StyledProjectName = styled.h5`
-  font-size: 25px;
+  font-size: 22px;
   margin: 0 0 7px;
   color: ${colors.lightestSlate};
   ${media.tablet`font-size: 20px;`};
@@ -44,15 +44,15 @@ const StyledProjectName = styled.h5`
 const StyledAuthor = styled.div`
   font-size: 16px;
   color: #888888;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-style: italic;
   ${media.thone`color: #888888;`};
 `;
 const StyledDescription = styled.div`
   color: ${colors.slate};
   font-size: ${fontSizes.lg};
-  line-height: 1.6;
-  margin: 10px 0;
+  line-height: 1.4;
+  margin: 10px 0 4px 0;
 
   p {
     margin: 0;
@@ -76,7 +76,7 @@ const StyledTechList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin: 15px 0 10px;
+  margin: 10px 0 10px;
   list-style: none;
 
   li {
@@ -363,7 +363,7 @@ const Featured = ({ data }) => {
                 </div>
 
                 <StyledContent>
-                  <StyledLabel>{type || 'Featured Project'}</StyledLabel>
+                  <StyledLabel dangerouslySetInnerHTML={{ __html: type || 'Featured Project' }} />
                   <StyledProjectName>
                     {slug ? (
                       <Link to={`/projects/${slug}`}>{title}</Link>

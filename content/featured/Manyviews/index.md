@@ -1,12 +1,11 @@
 ---
 date: '2025.08'
+venue_short: 'IJHCS 2026'
 type: '<span style="color: #3D3D3D"><em>International Journal of Human-Computer Studies (IJHCS)</em>, 2026</span>'
 title: "Introducing ManyViews: an AI-assisted Tool to Support Citizens' Engagement in the Design of Urban Spaces"
 author: '<u>Rong Huang</u>, Yihan Hou, Mela Bettega, Kang Zhang, Wei Zeng<sup>*</sup>'
 cover: 'demo.png'
-# slug: 'manyviews'
-# github: 'https://github.com/yashitanamdeo/Realtime-Face-Mask-Detection'
-# external: 'https://drive.google.com/file/d/1AFIZC2R4F3pmTlNZgq4BcIC2Uv_l2UGI/view?usp=sharing'
+pdf: 'https://doi.org/10.1016/j.ijhcs.2026.103796'
 video: 'https://youtu.be/gvNUFlirpOQ'
 tech:
   - Co-Design

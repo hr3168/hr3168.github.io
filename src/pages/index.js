@@ -92,6 +92,7 @@ export const pageQuery = graphql`
             type
             slug
             excerpt
+            showInProjects
           }
           html
         }

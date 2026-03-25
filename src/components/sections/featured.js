@@ -13,6 +13,30 @@ const StyledContainer = styled(Section)`
   flex-direction: column;
   align-items: flex-start;
 `;
+const StyledViewAllWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
+`;
+const StyledViewAllButton = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px;
+  border: none;
+  background-color: transparent;
+  color: ${colors.green};
+  font-family: ${fonts.SFMono};
+  font-size: ${fontSizes.sm};
+  font-weight: 600;
+  text-decoration: none;
+  transition: ${theme.transition};
+  &:hover {
+    color: ${colors.lightGreen};
+    transform: translateX(4px);
+  }
+`;
 const StyledContent = styled.div`
   flex: 1;
   min-width: 0;
@@ -225,7 +249,9 @@ const StyledProject = styled.div`
 `;
 
 const Featured = ({ data }) => {
-  const featuredProjects = data.filter(({ node }) => node);
+  const featuredProjects = data.filter(
+    ({ node }) => node && node.frontmatter.showInProjects !== false,
+  );
 
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
@@ -334,9 +360,9 @@ const Featured = ({ data }) => {
                         href={pdf}
                         target="_blank"
                         rel="nofollow noopener noreferrer"
-                        aria-label="PDF Link"
+                        aria-label="Paper Link"
                       >
-                        PDF
+                        Paper
                       </StyledButton>
                     )}
                     {video && (
@@ -394,6 +420,10 @@ const Featured = ({ data }) => {
             );
           })}
       </div>
+
+      <StyledViewAllWrapper>
+        <StyledViewAllButton to="/publications">View All Publications →</StyledViewAllButton>
+      </StyledViewAllWrapper>
     </StyledContainer>
   );
 };

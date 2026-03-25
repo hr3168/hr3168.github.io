@@ -414,7 +414,11 @@ const ProjectTemplate = ({ data, location }) => {
         </StyledBackLink>
 
         <StyledProjectHeader>
-          <StyledLabel>{type || 'Featured Project'}</StyledLabel>
+          {type ? (
+            <StyledLabel dangerouslySetInnerHTML={{ __html: type }} />
+          ) : (
+            <StyledLabel>Featured Project</StyledLabel>
+          )}
           <StyledTitle>{title}</StyledTitle>
           {author && <StyledAuthor dangerouslySetInnerHTML={{ __html: author }} />}
         </StyledProjectHeader>

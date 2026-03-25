@@ -1,5 +1,6 @@
 ---
 date: '2023'
+venue_short: 'TVCG 2023'
 type: '<span style="color: #3D3D3D"><em>IEEE Transactions on Visualization and Computer Graphics</em>, 2023</span>'
 title: 'VISAtlas: An Image-Based Exploration and Query System for Large Visualization Collections via Neural Image Embedding'
 author: 'Yilin Ye, <u>Rong Huang</u>, Wei Zeng<sup>*</sup>'

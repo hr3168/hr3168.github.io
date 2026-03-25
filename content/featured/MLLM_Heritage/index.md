@@ -1,5 +1,6 @@
 ---
 date: '2025.11'
+venue_short: 'npj HS 2026'
 type: '<span style="color: #3D3D3D"><em>npj Heritage Science</em>, 2026</span>'
 title: 'Synthetic Data Generation with Spatial and Semantic Fidelity for Multimodal Large Language Model on Architectural Heritage Interpretation'
 author: '<u>Rong Huang</u>, Haichuan Lin, Wei Zeng<sup>*</sup>'
@@ -45,6 +46,8 @@ However, architectural heritage are often limited in scale, offering a narrow se
 
 This work addresses this gap by using **a synthetic data pipeline** to expand heritage training data at scale.
 
+![Framework](/images/mllm-heritage-frame.jpg)
+
 <!-- This requires models to answer three core questions:
 
 - **What is it?** — Visual perception capability
@@ -61,12 +64,15 @@ To overcome the lack of large architectural heritage data, we build a synthetic 
 The key idea is to generate new images that follow authentic architectural layouts while allowing controlled variation in materials, styles, and other visual attributes.
 This gives MLLMs access to many more combinations of structural and semantic features than what existing datasets can provide.
 
-We first curated a façades VQA dataset based on real-world façades images, as a foundation for dataset augmentation using our pipeline. These real façades provide the structural layouts and semantic references that our method builds upon.
 ![Self-curated dataset](/images/mllm-heritage-fig2.png)
+
+We first curated a façades VQA dataset based on real-world façades images, as a foundation for dataset augmentation using our pipeline. These real façades provide the structural layouts and semantic references that our method builds upon.
+
+![Dual-control generative framework](/images/mllm-heritage-tech.jpg)
 
 Our approach is based on a dual-control generative framework. We use layout annotations from real façades to guide the geometric structure of each synthetic sample, and we train lightweight style modules to adjust appearance and contextual cues.
 By pairing any layout with any style module, the system can create large numbers of diverse yet coherent façade images that remain realistic and suitable for VQA annotation.
-This expanded dataset forms the basis for fine-tuning MLLMs on architectural interpretation task
+This expanded dataset forms the basis for fine-tuning MLLMs on architectural interpretation task.
 
 ![Generative Results](/images/mllm-heritage-fig1.png)
 
@@ -74,5 +80,18 @@ This expanded dataset forms the basis for fine-tuning MLLMs on architectural int
 
 ## Results & Discussion
 
-In this project, we build a **structure-aware and semantic-aware diffusion pipeline** to generate a large, **high-fidelity VQA dataset** (59,884 VQA).
-Through systematic fine-tuning experiments, our augmented data significantly improves 7B models' reasoning, surpassing commercial MLLMs.
+**1. Fidelity and Generative Quality**
+
+Quantitative evaluations demonstrate that the proposed framework significantly outperforms baseline generative models in preserving architectural integrity.
+The Structure-aware module achieved a Structural Similarity Index Measure (SSIM) of 0.110, representing a 61.8% improvement over the Flux Redux baseline. CLIPScore analysis further confirmed high semantic preservation, even when the model intentionally introduced stylistically coherent variations.
+Expert assessments corroborated these metrics: the framework achieved a 74.7% top-tier rating in architectural plausibility, more than doubling the baseline’s 34.0%, while effectively eliminating the stylistic hallucinations common in standard diffusion models.
+
+**2. MLLM Performance and Generalizability**
+
+The fine-tuned 7B-parameter model demonstrated superior architectural reasoning capabilities, surpassing much larger commercial systems. Specifically, the model trained on the augmented dataset achieved a comprehensive accuracy of 58.2%, outperforming GPT-4o (57.1%), Gemini-2.5-Pro (52.7%), and Claude-3.5-Sonnet (52.4%). Notable gains were observed in spatial reasoning tasks, such as Element Distribution and Axis and Symmetry, where structure-aware controls reinforced essential geometric cues . Furthermore, the model showed successful cross-typological generalizability, as training on combined Chinese and European datasets yielded performance improvements without negative interference.
+
+**3. Diagnostic Reasoning and Reliability**
+
+Expert audits of model rationales revealed a shift from superficial pattern-matching to grounded architectural logic.
+The augmented model significantly mitigated cognitive failures, reducing the Object Hallucination rate from 42.1% to 19.8%, thereby outperforming the larger Qwen-VL-MAX in grounding reliability.
+While the Preservation and Restoration tasks showed more modest improvements due to the lack of expert-level subjective thresholding in current datasets, the overall results confirm that high-fidelity domain-specific data is more critical for performance than model parameter scaling in specialized scientific fields.

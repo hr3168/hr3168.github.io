@@ -287,28 +287,7 @@ const Featured = ({ data }) => {
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div>
-                  {slug ? (
-                    <StyledImgContainer as={Link} to={`/projects/${slug}`}>
-                      {cover && cover.childImageSharp && cover.childImageSharp.fluid ? (
-                        <StyledFeaturedImg fluid={cover.childImageSharp.fluid} alt={title} />
-                      ) : (
-                        <div
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            backgroundColor: '#f0f0f0',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#666',
-                            fontSize: '14px',
-                          }}
-                        >
-                          No Image
-                        </div>
-                      )}
-                    </StyledImgContainer>
-                  ) : (
+                  {true && (
                     <StyledImgContainer
                       href={external ? external : github ? github : '#'}
                       target="_blank"
@@ -336,15 +315,6 @@ const Featured = ({ data }) => {
                   )}
 
                   <StyledLinkWrapper>
-                    {slug && (
-                      <StyledButton
-                        as={Link}
-                        to={`/projects/${slug}`}
-                        aria-label="View Project Details"
-                      >
-                        Details
-                      </StyledButton>
-                    )}
                     {github && (
                       <StyledButton
                         href={github}
@@ -391,9 +361,7 @@ const Featured = ({ data }) => {
                 <StyledContent>
                   <StyledLabel dangerouslySetInnerHTML={{ __html: type || 'Featured Project' }} />
                   <StyledProjectName>
-                    {slug ? (
-                      <Link to={`/projects/${slug}`}>{title}</Link>
-                    ) : external ? (
+                    {external ? (
                       <a
                         href={external}
                         target="_blank"

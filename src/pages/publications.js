@@ -241,11 +241,6 @@ const PublicationsPage = ({ location, data }) => {
 
                 {hasLinks && (
                   <StyledLinks>
-                    {slug && (
-                      <StyledInternalLinkBtn to={`/projects/${slug}`}>
-                        Details
-                      </StyledInternalLinkBtn>
-                    )}
                     {pdf && (
                       <StyledLinkBtn href={pdf} target="_blank" rel="nofollow noopener noreferrer">
                         Paper

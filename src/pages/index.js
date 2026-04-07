@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Layout, Hero, Jobs, Featured } from '@components';
+import { Layout, Hero, Jobs, Featured, Projects } from '@components';
 import styled from 'styled-components';
 import { Main } from '@styles';
 
@@ -15,6 +15,7 @@ const IndexPage = ({ location, data }) => (
       <Hero data={data.hero.edges} />
       <Jobs data={data.jobs.edges} />
       <Featured data={data.featured.edges} />
+      <Projects data={data.photos.edges} />
     </StyledMainContainer>
   </Layout>
 );
@@ -95,6 +96,20 @@ export const pageQuery = graphql`
             showInProjects
           }
           html
+        }
+      }
+    }
+    photos: allFile(
+      filter: {
+        relativeDirectory: { eq: "projects" }
+        extension: { regex: "/(jpg|jpeg|png|webp)/" }
+      }
+      sort: { fields: [name], order: ASC }
+    ) {
+      edges {
+        node {
+          name
+          publicURL
         }
       }
     }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
@@ -13,34 +14,32 @@ const StyledContainer = styled(Section)`
 const StyledGrid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   margin-top: 35px;
-  ${media.tablet`
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  `};
+  ${media.tablet`grid-template-columns: repeat(2, 1fr);`};
+  ${media.phablet`grid-template-columns: 1fr;`};
 `;
 const StyledPhotoCard = styled.button`
   border: 0;
   padding: 0;
   cursor: zoom-in;
   width: 100%;
+  display: block;
+  aspect-ratio: 3 / 2;
   border-radius: ${theme.borderRadius};
   overflow: hidden;
   background: transparent;
   transition: ${theme.transition};
-  position: relative;
-  aspect-ratio: 1 / 1;
   &:hover,
   &:focus {
     transform: translateY(-3px);
+    opacity: 0.9;
   }
 `;
-const StyledPhotoImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+const StyledPhotoImage = styled(Img)`
+  width: 100% !important;
+  height: 100% !important;
 `;
 const StyledOverlay = styled.div`
   position: fixed;
@@ -71,8 +70,9 @@ const Projects = ({ data }) => {
     .map(({ node }) => ({
       title: node.name,
       src: node.publicURL,
+      fluid: node.childImageSharp && node.childImageSharp.fluid,
     }))
-    .filter(photo => photo.src);
+    .filter(photo => photo.fluid || photo.src);
 
   useEffect(() => {
     if (sr) {
@@ -93,7 +93,7 @@ const Projects = ({ data }) => {
 
   return (
     <StyledContainer id="projects">
-      <Heading ref={revealTitle}>Photography</Heading>
+      <Heading ref={revealTitle}>Film Photography</Heading>
 
       <StyledGrid>
         {photos.map((photo, i) => (
@@ -103,7 +103,20 @@ const Projects = ({ data }) => {
             onClick={() => setActivePhoto(photo)}
             aria-label={`Open ${photo.title}`}
           >
-            <StyledPhotoImage src={photo.src} alt={photo.title} loading="lazy" />
+            {photo.fluid ? (
+              <StyledPhotoImage
+                fluid={photo.fluid}
+                alt={photo.title}
+                imgStyle={{ objectFit: 'cover' }}
+              />
+            ) : (
+              <img
+                src={photo.src}
+                alt={photo.title}
+                loading="lazy"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            )}
           </StyledPhotoCard>
         ))}
       </StyledGrid>

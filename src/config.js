@@ -42,7 +42,7 @@ module.exports = {
       url: '/#jobs',
     },
     {
-      name: 'Photography',
+      name: 'Film Photography',
       url: '/#projects',
     },
   ],

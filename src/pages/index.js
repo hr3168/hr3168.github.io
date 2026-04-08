@@ -102,7 +102,7 @@ export const pageQuery = graphql`
     photos: allFile(
       filter: {
         relativeDirectory: { eq: "projects" }
-        extension: { regex: "/(jpg|jpeg|png|webp)/" }
+        extension: { regex: "/(jpg|jpeg|png|webp|JPG|JPEG|PNG|WEBP)/" }
       }
       sort: { fields: [name], order: ASC }
     ) {
@@ -110,6 +110,11 @@ export const pageQuery = graphql`
         node {
           name
           publicURL
+          childImageSharp {
+            fluid(maxWidth: 900, quality: 80, toFormat: WEBP) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }

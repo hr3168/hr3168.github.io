@@ -120,17 +120,16 @@ const Footer = () => {
 
     const loadClustrmaps = () => {
       if (clustrMapsContainerRef.current) {
-        // Create the widget HTML directly
-        const widgetHTML = `
-          <a href="https://clustrmaps.com/site/1c8md" title="Visit tracker">
-            <img src="https://clustrmaps.com/map_v2.png?d=yNdRW8g_Lz5oCcgK5nuE-zW2Q80TAUvkzKbDg84s_4g&cl=ffffff" 
-                 style="max-width: 100%; height: auto;" 
-                 alt="Visitors Map" />
-          </a>
-        `;
-        clustrMapsContainerRef.current.innerHTML = widgetHTML;
+        // MapMyVisitors (formerly ClustrMaps) renders the widget where its
+        // script tag is inserted, so append a real script element.
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = 'mapmyvisitors';
+        script.async = true;
+        script.src =
+          '//mapmyvisitors.com/map.js?d=koHc1vzSOuTVAbUF7N3KFhysHuBzvqnITL3O5ebx9Ho&cl=ffffff&w=a';
+        clustrMapsContainerRef.current.appendChild(script);
         clustrMapsLoadedRef.current = true;
-        console.log('ClustrMaps widget loaded');
       }
     };
 

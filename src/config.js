@@ -1,16 +1,16 @@
 module.exports = {
   siteTitle: 'Rong Huang',
   siteDescription:
-    'Rong Huang is a Ph.D. candidate in the Computational Media and Arts Thrust at the Information Hub, The Hong Kong University of Science and Technology (Guangzhou), co-supervised by Prof. Wei Zeng and Prof. Kang Zhang.',
+    'Rong Huang is a postdoctoral researcher in Human-Computer Interaction(HCI) and human-centered AI with the Humgan-Centered Computing Section at Aalborg University, where I work with Niels van Berkel.',
   siteKeywords:
-    'Rong Huang, Rong Huang hkustgz, Rong Huang hkust, Rong Huang HKUST, Rong Huang HKUSTGZ, Rong, Huang, ronghuang, HKUSTGZ, HKUST, computational media and arts, information hub, The hong kong university of science and technology (Guangzhou), China',
-  siteUrl: 'https://hr3168.github.io/research',
+    'Rong Huang, Rong Huang hkustgz, Rong Huang aalborg university, Rong Huang hkust, Rong Huang HKUST, Rong Huang HKUSTGZ, Rong, Huang, ronghuang, Aalborg University, Aalborg, Denmark, AAU, HAC, HCC, HKUSTGZ, HKUST, computational media and arts, information hub, The hong kong university of science and technology (Guangzhou), China',
+  siteUrl: 'https://hr3168.github.io',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-45666519-2',
   googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
   name: 'Rong Huang',
-  location: 'China',
-  email: 'rhuang421@connect.hkust-gz.edu.cn',
+  location: 'Aalborg, Denmark',
+  email: 'rohu@cs.aau.dk',
   github: '@',
   twitterHandle: '@',
   socialMedia: [

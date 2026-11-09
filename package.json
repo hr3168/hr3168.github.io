@@ -2,10 +2,10 @@
   "name": "v1",
   "description": "Personal Website V1",
   "version": "1.0.0",
-  "author": "Rong Huang <rhuang421@connect.hkust-gz.edu.cn>",
+  "author": "Rong Huang <rohu@cs.aau.dk>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hr3168/research"
+    "url": "https://github.com/hr3168/hr3168.github.io"
   },
   "keywords": [
     "gatsby"

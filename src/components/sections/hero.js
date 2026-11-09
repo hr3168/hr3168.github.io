@@ -136,14 +136,26 @@ const StyledDescription = styled.div`
   }
 
   .job-hunting-block {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 12px 20px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 28px;
+    padding: 10px 18px;
     background-color: ${colors.transGreen};
     border-radius: 8px;
     border-left: 4px solid ${colors.green};
-    font-size: inherit;
-    line-height: 1.3;
+    font-size: ${fontSizes.md};
+    line-height: 1.15;
+
+    ul {
+      list-style: none;
+      margin: 4px 0 0;
+      padding: 0;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
 
     .job-hunting-emoji {
       margin-bottom: 1px;
@@ -231,39 +243,46 @@ const Hero = ({ data }) => {
     </div>
   );
 
+  const newsStart = html.indexOf('<div class="job-hunting-block">');
+  const bioHtml = newsStart === -1 ? html : html.slice(0, newsStart);
+  const newsHtml = newsStart === -1 ? '' : html.slice(newsStart);
+
   const contentSection = () => (
-    <StyledFlexContainer style={{ transitionDelay: '400ms' }}>
-      <StyledContent>
-        <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
-        {skills && (
-          <SkillsContainer>
-            {skills.map((skill, i) => (
-              <Skill key={i}>{skill}</Skill>
-            ))}
-          </SkillsContainer>
+    <div style={{ transitionDelay: '400ms', width: '100%' }}>
+      <StyledFlexContainer>
+        <StyledContent>
+          <StyledDescription dangerouslySetInnerHTML={{ __html: bioHtml }} />
+          {skills && (
+            <SkillsContainer>
+              {skills.map((skill, i) => (
+                <Skill key={i}>{skill}</Skill>
+              ))}
+            </SkillsContainer>
+          )}
+        </StyledContent>
+        {avatar && avatar.childImageSharp && avatar.childImageSharp.fluid && (
+          <StyledPic>
+            <StyledAvatarContainer>
+              <StyledAvatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+            </StyledAvatarContainer>
+          </StyledPic>
         )}
-        <StyledButtonContainer>
-          <StyledCVLink href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-            CV
-          </StyledCVLink>
-          <StyledScholarLink
-            href="https://scholar.google.com/citations?user=r3_EsikAAAAJ"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Google Scholar
-          </StyledScholarLink>
-          <StyledEmailLink href={`mailto:${email}`}>Email</StyledEmailLink>
-        </StyledButtonContainer>
-      </StyledContent>
-      {avatar && avatar.childImageSharp && avatar.childImageSharp.fluid && (
-        <StyledPic>
-          <StyledAvatarContainer>
-            <StyledAvatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-          </StyledAvatarContainer>
-        </StyledPic>
-      )}
-    </StyledFlexContainer>
+      </StyledFlexContainer>
+      {newsHtml && <StyledDescription dangerouslySetInnerHTML={{ __html: newsHtml }} />}
+      <StyledButtonContainer>
+        <StyledCVLink href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+          CV
+        </StyledCVLink>
+        <StyledScholarLink
+          href="https://scholar.google.com/citations?user=r3_EsikAAAAJ"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google Scholar
+        </StyledScholarLink>
+        <StyledEmailLink href={`mailto:${email}`}>Email</StyledEmailLink>
+      </StyledButtonContainer>
+    </div>
   );
 
   const items = [headerSection, contentSection];

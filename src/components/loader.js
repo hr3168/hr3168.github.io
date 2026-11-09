@@ -78,7 +78,11 @@ const Loader = ({ finishLoading }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 10);
-    animate();
+    if (document.querySelector('#logo path')) {
+      animate();
+    } else {
+      finishLoading();
+    }
     return () => clearTimeout(timeout);
   }, []);
 

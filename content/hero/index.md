@@ -20,7 +20,7 @@ I completed my Ph.D. in the [CMA](https://cma.hkust-gz.edu.cn/) at the [HKUST(GZ
 <div class="job-hunting-block">
 <div><span class="job-hunting-label">News:</span></div>
 <ul>
-<li><span class="news-date">[ Sep. 2026 ]</span><span class="news-mark">✨</span><span class="news-text">Joined as a Postdoctoral Researcher in the HAC group at Aalborg University, working with <a href="https://www.nielsvanberkel.com/">Niels</a>!</span></li>
+<li><span class="news-date">[ Sep. 2026 ]</span><span class="news-mark">✨</span><span class="news-text">Joined as a Postdoctoral Researcher in the HAC group at Aalborg University!</span></li>
 <li><span class="news-date">[ Aug. 2026 ]</span><span class="news-mark">✨</span><span class="news-text">Passed my Ph.D. thesis defense!</span></li>
 <li><span class="news-date">[ May. 2026 ]</span><span class="news-mark">✨</span><span class="news-text">Happy to visit Aalto University, hosted by <a href="https://www.aalto.fi/en/people/pia-fricker">Prof. Pia Fricker</a>!</span></li>
 <li><span class="news-date">[ Mar. 2026 ]</span><span class="news-mark">✨</span><span class="news-text">Our paper was published in <a href="https://www.nature.com/articles/s40494-026-02446-2"><em>npj Heritage Science</em></a>!</span></li>

@@ -23,7 +23,7 @@ import { hex2rgba } from '@utils';
 
 // 新的颜色 浅色配色
 
-const ACCENT = '#E98F71'; // 两侧和导航栏的颜色
+const ACCENT = '#E38E83'; // 两侧和导航栏的颜色
 // const ACCENT = '#3DA8A5'; // 两侧和导航栏的颜色
 const DARK_BG = '#FFFFFF';
 const BG = '#FFFFFF';

@@ -68,7 +68,7 @@ const StyledAvatarContainer = styled.div`
     width: 100%;
     height: 100%;
     border-radius: ${theme.borderRadius};
-    border: 2px solid ${colors.green};
+    border: 2px solid #d34211;
     top: 10px;
     left: 10px;
     z-index: -1;
@@ -141,20 +141,48 @@ const StyledDescription = styled.div`
     width: 100%;
     margin-top: 28px;
     padding: 10px 18px;
-    background-color: ${colors.transGreen};
+    background-color: #fff9f7;
     border-radius: 8px;
-    border-left: 4px solid ${colors.green};
+    border-left: 4px solid #fff9f7;
     font-size: ${fontSizes.md};
-    line-height: 1.15;
+    line-height: 1.3;
 
     ul {
       list-style: none;
-      margin: 4px 0 0;
+      margin: 6px 0 0;
       padding: 0;
     }
 
+    li {
+      display: grid;
+      grid-template-columns: max-content 1.6em minmax(0, 1fr);
+      column-gap: 0.35em;
+      align-items: baseline;
+      margin: 0;
+    }
+
     li + li {
-      margin-top: 2px;
+      margin-top: 0;
+    }
+
+    .news-date,
+    .news-mark,
+    .news-text {
+      line-height: 1.15;
+    }
+
+    .news-date {
+      font-family: ${fonts.SFMono};
+      font-size: 0.86em;
+      white-space: nowrap;
+    }
+
+    .news-mark {
+      text-align: center;
+    }
+
+    .news-text {
+      min-width: 0;
     }
 
     .job-hunting-emoji {
